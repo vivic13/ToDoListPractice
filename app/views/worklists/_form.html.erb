@@ -1,0 +1,20 @@
+<% if @worklist.errors.present?%>
+  <ul>
+        <% @worklist.errors.each do |error, message|%>
+          <li> <%= "#{error.capitalize}  #{message}" %></li>
+        <% end %>
+  </ul>
+<% end%>
+
+
+
+
+<%= form_for @worklist do |f| %>
+  <%= f.label :title%></br>
+  <%= f.text_field :title%></br>
+  <%= f.label :duedate%></br>
+  <%= f.text_field :duedate%></br>
+  <%= f.label :description%></br>
+  <%= f.text_field :description%></br>
+  <%= f.submit %>
+<% end %>
