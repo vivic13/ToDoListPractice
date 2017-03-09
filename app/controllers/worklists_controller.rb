@@ -3,7 +3,7 @@ class WorklistsController < ApplicationController
 	before_action :find_list, only: [:show, :edit, :update, :destroy]
 
 	def index 
-		@worklists=Worklist.all
+		@worklists=Worklist.order(duedate: :asc)
 	end
 
 	def show
