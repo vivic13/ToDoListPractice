@@ -6,12 +6,12 @@
   <li>
     <%= worklist.title %> </br>
     <%= worklist.duedate %> </br>
-    <%= link_to 'Detail', worklist_path(worklist) %></br>
-    <%= link_to 'Edit', edit_worklist_path(worklist) %></br>
-    <%= link_to 'Done&Delete', worklist_path(worklist), method: :delete, data:{ confirm: "Are you sure?" } %></br>
+    <%= link_to 'Detail', worklist_path(worklist) ,class:"btn btn-info btn-xs"%>
+    <%= link_to 'Edit', edit_worklist_path(worklist),class:"btn btn-primary btn-xs" %>
+    <%= link_to 'Done&Delete', worklist_path(worklist), method: :delete, data:{ confirm: "Are you sure?"},class:"btn btn-danger btn-xs"%>
     </br></br>
   </li>
  <% end %>
 </ul>
 
-<%= link_to 'Add to-do-list?', new_worklist_path %>
+<%= link_to 'Add to-do-list?', new_worklist_path ,class:"btn btn-primary btn-xs"%>
