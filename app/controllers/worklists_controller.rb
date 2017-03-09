@@ -1,11 +1,13 @@
 class WorklistsController < ApplicationController
 
+	before_action :find_list, only: [:show, :edit, :update, :destroy]
+
 	def index 
 		@worklists=Worklist.all
 	end
 
 	def show
-		@worklist=Worklist.find(params[:id])
+	
 	end
 
 	def new
@@ -22,11 +24,10 @@ class WorklistsController < ApplicationController
 	end
 
 	def edit
-		@worklist=Worklist.find(params[:id])
+
 	end
 
 	def update
-		@worklist=Worklist.find(params[:id])
 		if @worklist.update(work)
 			redirect_to worklist_url(@worklist)
 		else
@@ -35,7 +36,6 @@ class WorklistsController < ApplicationController
 	end
 
 	def destroy
-		@worklist=Worklist.find(params[:id])
 		@worklist.destroy
 		redirect_to worklists_url
 	end
@@ -45,6 +45,10 @@ class WorklistsController < ApplicationController
 
 	def work
 		params.require(:worklist).permit(:title, :duedate, :description)
+	end
+
+	def find_list		
+		@worklist=Worklist.find(params[:id])
 	end
 
 end
