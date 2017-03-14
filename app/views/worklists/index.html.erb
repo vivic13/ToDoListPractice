@@ -1,6 +1,8 @@
 
 <h1> Vivian's To Do List </h1>
 
+
+
 <ul>
  <% @worklists.each do |worklist| %>
   <li>
@@ -14,4 +16,6 @@
  <% end %>
 </ul>
 
+
 <%= link_to 'Add to-do-list?', new_worklist_path ,class:"btn btn-primary btn-xs"%>
+<%= paginate @worklists %>

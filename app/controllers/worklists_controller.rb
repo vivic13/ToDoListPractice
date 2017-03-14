@@ -3,11 +3,11 @@ class WorklistsController < ApplicationController
 	before_action :find_list, only: [:show, :edit, :update, :destroy]
 
 	def index 
-		@worklists=Worklist.order(duedate: :asc)
+		@worklists=Worklist.page(params[:page]).per(5)  #預期使用者告訴我們他要第幾頁:page
 	end
 
 	def show
-	
+		@page_title=@worklist.title
 	end
 
 	def new
@@ -18,6 +18,7 @@ class WorklistsController < ApplicationController
 		@worklist=Worklist.new(work)
 		if @worklist.save
 			redirect_to worklists_url
+			flash[:notice] = "event was successfully created"
 		else
 			render :new
 		end
@@ -44,7 +45,7 @@ class WorklistsController < ApplicationController
 	private
 
 	def work
-		params.require(:worklist).permit(:title, :duedate, :description)
+		params.require(:worklist).permit(:title, :duedate, :description, :school_id, :review_ids =>[])
 	end
 
 	def find_list		

@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308072600) do
+ActiveRecord::Schema.define(version: 20170312072951) do
+
+  create_table "list_review_rs", force: :cascade do |t|
+    t.integer  "review_id"
+    t.integer  "worklist_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name"
+    t.string   "school_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "worklists", force: :cascade do |t|
     t.string   "title"
@@ -18,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170308072600) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.text     "school_id"
   end
 
 end
